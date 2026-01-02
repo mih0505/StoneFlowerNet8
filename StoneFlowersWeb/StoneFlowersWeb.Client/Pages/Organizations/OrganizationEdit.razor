@@ -1,0 +1,63 @@
+@page "/organizations/edit/{Id:guid?}"
+@rendermode InteractiveWebAssembly
+@inject StoneFlowersWeb.Client.Services.IOrganizationService OrgService
+@inject NavigationManager Nav
+@using StoneFlowersWeb.Client.Models
+
+<h3>@(Id == Guid.Empty || Id is null ? "Добавить организацию" : "Изменить организацию")</h3>
+
+@if (isLoading)
+{
+    <p>Загрузка...</p>
+}
+else
+{
+    <EditForm Model="model" OnValidSubmit="Save" FormName="organization-form">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Введите название организации</label>
+            <InputText class="form-control" @bind-Value="model.Name" />
+        </div>
+
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+        <button class="btn btn-link" type="button" @onclick="Cancel">Отменить</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public Guid? Id { get; set; }
+
+    private OrganizationEditModel model = new OrganizationEditModel();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id.HasValue && Id.Value != Guid.Empty)
+        {
+            var dto = await OrgService.GetByIdAsync(Id.Value);
+            model.Id = dto.Id;
+            model.Name = dto.Name;
+        }
+
+        isLoading = false;
+    }
+
+    private async Task Save()
+    {
+        if (Id.HasValue && Id.Value != Guid.Empty)
+        {
+            await OrgService.UpdateAsync(model.Id, model.Name);
+        }
+        else
+        {
+            var newId = await OrgService.CreateAsync(model.Name);
+        }
+
+        Nav.NavigateTo("/organizations");
+    }
+
+    void Cancel() => Nav.NavigateTo("/organizations");
+}

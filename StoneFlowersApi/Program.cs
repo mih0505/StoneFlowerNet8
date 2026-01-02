@@ -1,6 +1,9 @@
 using AccessLayer;
 using AccessLayer.Extensions;
+using ApplicationLayer.Extensions;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,25 @@ builder.Services.AddIdentity<Domain.Common.User, Domain.Common.Role>(options =>
 .AddEntityFrameworkStores<AccessLayer.StoneFlowersDbContext>();
 
 builder.Services.AddControllers();
+
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowBlazorDev", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:5033", "https://localhost:5033") // адрес вашего Blazor-приложения
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+// Add application services (CQRS facades/handlers, validators etc.)
+builder.Services.AddApplication();
+
+// AutoMapper profiles from Application layer
+// Register AutoMapper profiles from loaded assemblies
+builder.Services.AddAutoMapper(cfg => { }, AppDomain.CurrentDomain.GetAssemblies());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -51,9 +73,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+// Подключаем CORS ДО MapControllers и ДО UseAuthorization
+app.UseCors("AllowBlazorDev");
 
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

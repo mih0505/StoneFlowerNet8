@@ -1,0 +1,51 @@
+@page "/organizations/{Id:guid}"
+@rendermode InteractiveWebAssembly
+@inject StoneFlowersWeb.Client.Services.IOrganizationService OrgService
+@inject NavigationManager Nav
+
+<h3>Структура организации</h3>
+
+@if (org == null)
+{
+    <p>Загрузка...</p>
+}
+else
+{
+    <div>
+        <h4>@org.Name</h4>
+        <p>
+            <button class="btn btn-secondary" @onclick="Edit">Изменить</button>
+            <button class="btn btn-link" @onclick="Back">Назад</button>
+        </p>
+
+        <h5>Подразделения: </h5>
+        @if (org.Departments == null || !org.Departments.Any())
+        {
+            <p>Подразделения отсутствуют</p>
+        }
+        else
+        {
+            <ul>
+                @foreach (var d in org.Departments)
+                {
+                    <li>@d.Name (@d.Code)</li>
+                }
+            </ul>
+        }
+    </div>
+}
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private StoneFlowersWeb.Client.Models.OrganizationDetail org;
+
+    protected override async Task OnInitializedAsync()
+    {
+        org = await OrgService.GetByIdAsync(Id);
+    }
+
+    void Edit() => Nav.NavigateTo($"/organizations/edit/{org.Id}");
+    void Back() => Nav.NavigateTo("/organizations");
+}

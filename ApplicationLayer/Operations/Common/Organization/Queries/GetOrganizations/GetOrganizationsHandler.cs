@@ -14,9 +14,9 @@ namespace ApplicationLayer.Operations.Common.Organization.Queries.GetOrganizatio
 
         public override async Task<List<OrganizationDTO>> Handle(GetOrganizationsQuery request, CancellationToken cancellationToken)
         {
-            var organizations = await db.Departments
-                .Where(dep => !dep.IsDeleted)
-                .OrderBy(dep => dep.Name)
+            var organizations = await db.Organizations
+                .Where(o => !o.IsDeleted)
+                .OrderBy(o => o.Name)
                 .ProjectTo<OrganizationDTO>(mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 

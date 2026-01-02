@@ -12,6 +12,7 @@ namespace ApplicationLayer.Operations.Common.Organization.Queries.GetOrganizatio
         public override async Task<Domain.Common.Organization> Handle(GetOrganizationByIdQuery request, CancellationToken cancellationToken)
         {
             var organization = await db.Organizations
+                .Include(o => o.Departments)
                 .FirstOrDefaultAsync(org => org.Id == request.Id, cancellationToken);
 
             if (organization is null)

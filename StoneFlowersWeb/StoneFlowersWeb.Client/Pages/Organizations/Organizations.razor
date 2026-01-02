@@ -1,0 +1,78 @@
+@page "/organizations"
+@rendermode InteractiveWebAssembly
+@inject StoneFlowersWeb.Client.Services.IOrganizationService OrgService
+@inject NavigationManager Nav
+
+
+<h3>Организации</h3>
+
+<p>
+    <button class="btn btn-primary" @onclick="Create">Добавить</button>
+</p>
+
+@if (items == null)
+{
+    <p>Загрузка...</p>
+}
+else if (!items.Any())
+{
+    <p>Организации не найдены.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var it in items)
+            {
+                <tr>
+                    <td>@it.Name</td>
+                    <td>
+                        <button class="btn btn-link" @onclick="() => View(it.Id)"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-link" @onclick="() => Edit(it.Id)"><i class="bi bi-pencil"></i></button>
+                        <button class="btn btn-link text-danger" @onclick="() => Delete(it.Id)"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<StoneFlowersWeb.Client.Models.OrganizationListItem> items;
+
+    protected override async Task OnInitializedAsync()
+    {
+        items = await OrgService.GetAllAsync();
+    }
+
+    void Create() => Nav.NavigateTo("/organizations/edit");
+    void View(Guid id) => Nav.NavigateTo($"/organizations/{id}");
+    void Edit(Guid id) => Nav.NavigateTo($"/organizations/edit/{id}");
+
+    async Task Delete(Guid id)
+    {
+        var org = await OrgService.GetByIdAsync(id);
+        
+        if (org.Departments.Any())
+        {
+            await JS.InvokeAsync<bool>("alert", $"Организация \"{org.Name}\" содержит подразделения! Для её удаления сначала удалите все вложенные подразделения!"); 
+            return;
+        }
+                
+        if (!await JsConfirm($"Удалить организацию \"{org.Name}\"?")) return;
+        
+        await OrgService.DeleteAsync(id);
+        items = await OrgService.GetAllAsync();
+        StateHasChanged();
+    }
+
+    // small JS confirm helper via IJSRuntime
+    [Inject] IJSRuntime JS { get; set; }
+    private async Task<bool> JsConfirm(string message) => await JS.InvokeAsync<bool>("confirm", message);
+}

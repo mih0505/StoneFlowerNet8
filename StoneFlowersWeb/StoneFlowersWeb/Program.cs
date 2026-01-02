@@ -1,11 +1,19 @@
 using StoneFlowersWeb.Client.Pages;
 using StoneFlowersWeb.Components;
+using StoneFlowersWeb.Client.Services;
+using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
+
+// HTTP-клиент направляем на Web API (в development: http://localhost:8080)
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:8080/") });
+
+// Регистрация клиентского сервиса для DI в server-side хосте
+builder.Services.AddScoped<IOrganizationService, OrganizationService>();
 
 var app = builder.Build();
 

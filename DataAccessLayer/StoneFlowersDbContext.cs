@@ -2,16 +2,11 @@
 using AccessLayer.Configurations.OrderModels;
 using AccessLayer.Configurations.ProductModels;
 using ApplicationLayer.Interfaces;
-using DataAccessLayer.Configurations.Common;
 using Domain.Common;
 using Domain.OrderModels;
 using Domain.ProductModels;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Data;
 
 namespace AccessLayer;
 

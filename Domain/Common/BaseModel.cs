@@ -20,5 +20,5 @@ public abstract class BaseModel : IBaseModel
     /// <summary>
     /// Версия
     /// </summary>
-    public DateTime Version { get; set; } = DateTime.Now;
+    public DateTime Version { get; set; } = DateTime.UtcNow;
 }

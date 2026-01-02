@@ -81,6 +81,22 @@ namespace ApplicationLayer.Operations.Common.Organization
         }
 
         /// <summary>
+        /// Получить организацию с подразделениями (детально)
+        /// </summary>
+        /// <param name="id">Идентификатор организации</param>
+        /// <returns>OrganizationDetailDTO или null</returns>
+        public async Task<Queries.GetOrganizationDetail.OrganizationDetailDTO> GetOrganizationDetailAsync(Guid id)
+        {
+            if (id == Guid.Empty)
+                return null;
+
+            return await _mediator.Send(new Queries.GetOrganizationDetail.GetOrganizationDetailQuery
+            {
+                Id = id,
+            });
+        }
+
+        /// <summary>
         /// Получить список организаций
         /// </summary>
         /// <returns>Список организаций</returns>

@@ -1,4 +1,7 @@
-﻿using Domain.Common;
+﻿using System;
+using System.Linq;
+using System.Threading;
+using Domain.Common;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -56,5 +59,26 @@ public static class DbInitializer
             await userManager.CreateAsync(standardUser, "User123!");
             await userManager.AddToRoleAsync(standardUser, UserRole);
         }
+
+        // Сиды организаций и подразделений
+        var db = serviceProvider.GetRequiredService<StoneFlowersDbContext>();
+
+        if (!db.Organizations.Any(o => o.Name == "(Д) Каменный цветок"))
+        {
+            var orgD = new Organization { Id = Guid.NewGuid(), Name = "(Д) Каменный цветок" };
+            orgD.Departments.Add(new Department { Id = Guid.NewGuid(), Name = "Гоголя", Code = "Д-Гоголя", Address = new Address { House = "-" }, PhoneNumbers = new PhoneNumbers { PhoneNumber = "-" } });
+            orgD.Departments.Add(new Department { Id = Guid.NewGuid(), Name = "Свободы", Code = "Д-Свободы", Address = new Address { House = "-" }, PhoneNumbers = new PhoneNumbers { PhoneNumber = "-" } });
+            db.Organizations.Add(orgD);
+        }
+
+        if (!db.Organizations.Any(o => o.Name == "(Ю) Каменный цветок"))
+        {
+            var orgY = new Organization { Id = Guid.NewGuid(), Name = "(Ю) Каменный цветок" };
+            orgY.Departments.Add(new Department { Id = Guid.NewGuid(), Name = "Ленина", Code = "Ю-Ленина", Address = new Address { House = "-" }, PhoneNumbers = new PhoneNumbers { PhoneNumber = "-" } });
+            orgY.Departments.Add(new Department { Id = Guid.NewGuid(), Name = "Дом Быта", Code = "Ю-ДомБыта", Address = new Address { House = "-" }, PhoneNumbers = new PhoneNumbers { PhoneNumber = "-" } });
+            db.Organizations.Add(orgY);
+        }
+
+        await db.SaveChangesAsync(CancellationToken.None);
     }
 }
