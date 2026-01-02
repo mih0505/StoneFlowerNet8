@@ -13,7 +13,7 @@ namespace ApplicationLayer.Operations.Common.Organization.Commands.Create
         {
             var organization = new Domain.Common.Organization
             {
-                Id = Guid.NewGuid(),                
+                Id = Guid.NewGuid(),
                 Name = command.Name,
             };
 
@@ -21,6 +21,6 @@ namespace ApplicationLayer.Operations.Common.Organization.Commands.Create
             await db.SaveChangesAsync(cancellationToken);
 
             return organization.Id;
-        }                
+        }
     }
 }

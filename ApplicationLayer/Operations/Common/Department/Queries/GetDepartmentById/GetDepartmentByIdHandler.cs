@@ -7,7 +7,7 @@ namespace ApplicationLayer.Operations.Common.Department.Queries.GetDepartmentByI
     internal class GetDepartmentByIdHandler : RequestHandlerBase<GetDepartmentByIdQuery, Domain.Common.Department>
     {
         public GetDepartmentByIdHandler(IStoneFlowersDbContext context) : base(context)
-        {}
+        { }
 
         public override async Task<Domain.Common.Department> Handle(GetDepartmentByIdQuery request, CancellationToken cancellationToken)
         {
@@ -15,7 +15,7 @@ namespace ApplicationLayer.Operations.Common.Department.Queries.GetDepartmentByI
                 .Include(org => org.Organization)
                 .FirstOrDefaultAsync(dep => dep.Id == request.Id, cancellationToken);
 
-            if(department is null)
+            if (department is null)
             {
                 throw new ArgumentNullException();
             }

@@ -16,7 +16,7 @@ public abstract class BaseModel : IBaseModel
     /// Удалена ли запись
     /// </summary>
     public bool IsDeleted { get; set; } = false;
-    
+
     /// <summary>
     /// Версия
     /// </summary>

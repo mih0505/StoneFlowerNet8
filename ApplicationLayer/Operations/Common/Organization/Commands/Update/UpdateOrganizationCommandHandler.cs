@@ -20,9 +20,9 @@ namespace ApplicationLayer.Operations.Common.Organization.Commands.Update
             if (organization == null)
             {
                 throw new NotFoundException(typeof(Domain.Common.Organization), command.Id);
-            }            
+            }
             organization.Name = command.Name;
-            
+
 
             await db.SaveChangesAsync(cancellationToken);
             return Unit.Value;

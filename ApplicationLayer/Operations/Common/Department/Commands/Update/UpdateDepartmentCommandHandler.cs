@@ -9,7 +9,7 @@ namespace ApplicationLayer.Operations.Common.Department.Commands.Update
     internal class UpdateDepartmentCommandHandler : RequestHandlerBase<UpdateDepartmentCommand, Unit>
     {
         public UpdateDepartmentCommandHandler(IStoneFlowersDbContext context) : base(context)
-        {}
+        { }
 
         public async override Task<Unit> Handle(UpdateDepartmentCommand command, CancellationToken cancellationToken)
         {
@@ -20,7 +20,7 @@ namespace ApplicationLayer.Operations.Common.Department.Commands.Update
             {
                 throw new NotFoundException(typeof(Domain.Common.Department), command.Id);
             }
-                        
+
             department.Code = command.Code;
             department.Organization = command.Organization;
             department.Name = command.Name;

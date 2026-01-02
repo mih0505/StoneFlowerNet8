@@ -23,8 +23,8 @@ namespace ApplicationLayer.Operations.Common.Organization
         public async Task<Guid> CreateAsync(CreateOrganizationCommandDTO dto, CancellationToken cancellationToken)
         {
             var command = new CreateOrganizationCommand
-            {                
-                Name = dto.Name,                
+            {
+                Name = dto.Name,
             };
 
             var departmentId = await _mediator.Send(command, cancellationToken);
@@ -41,8 +41,8 @@ namespace ApplicationLayer.Operations.Common.Organization
         {
             var command = new UpdateOrganizationCommand
             {
-                Id = dto.Id,               
-                Name = dto.Name,               
+                Id = dto.Id,
+                Name = dto.Name,
             };
 
             await _mediator.Send(command, cancellationToken);
@@ -72,7 +72,7 @@ namespace ApplicationLayer.Operations.Common.Organization
         public async Task<Domain.Common.Organization> GetOrganizationAsync(Guid id)
         {
             if (id == Guid.Empty)
-                return null;                       
+                return null;
 
             return await _mediator.Send(new GetOrganizationByIdQuery
             {
@@ -85,8 +85,8 @@ namespace ApplicationLayer.Operations.Common.Organization
         /// </summary>
         /// <returns>Список организаций</returns>
         public async Task<List<OrganizationDTO>> GetOrganizationsAsync()
-        {            
+        {
             return await _mediator.Send(new GetOrganizationsQuery());
-        }        
+        }
     }
 }

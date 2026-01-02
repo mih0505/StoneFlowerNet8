@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ApplicationLayer.Operations.Common.Department.Queries.GetDepartments
 {
     internal class GetDepartmentsHandler : RequestHandlerBase<GetDepartmentsQuery, List<DepartmentDTO>>
-    {        
+    {
         public GetDepartmentsHandler(IStoneFlowersDbContext context, IMapper mapper)
         : base(context, mapper)
         { }

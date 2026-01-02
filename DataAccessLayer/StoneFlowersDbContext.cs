@@ -23,7 +23,7 @@ public class StoneFlowersDbContext : IdentityDbContext<User, Role, Guid>, IStone
 
     public DbSet<Department> Departments { get; set; } = null!;
     public DbSet<Organization> Organizations { get; set; } = null!;
-    public DbSet<User> Users { get; set; } = null!;
+
     public DbSet<Customer> Customers { get; set; } = null!;
     public DbSet<Order> Orders { get; set; } = null!;
     public DbSet<OrderProduct> OrderProducts { get; set; } = null!;
@@ -39,17 +39,17 @@ public class StoneFlowersDbContext : IdentityDbContext<User, Role, Guid>, IStone
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
+
         new DepartmentConfiguration().Configure(modelBuilder.Entity<Department>());
         new OrganizationConfiguration().Configure(modelBuilder.Entity<Organization>());
-               
+
         new CustomerConfiguration().Configure(modelBuilder.Entity<Customer>());
         new DeceasedConfiguration().Configure(modelBuilder.Entity<Deceased>());
         new OrderConfiguration().Configure(modelBuilder.Entity<Order>());
         new OrderProductConfiguration().Configure(modelBuilder.Entity<OrderProduct>());
         new OrderTypeConfiguration().Configure(modelBuilder.Entity<OrderType>());
         new PaymentConfiguration().Configure(modelBuilder.Entity<Payment>());
-        
+
         new CategoryConfiguration().Configure(modelBuilder.Entity<Category>());
         new CategoryPropertyConfiguration().Configure(modelBuilder.Entity<CategoryProperty>());
         new ProductConfiguration().Configure(modelBuilder.Entity<Product>());

@@ -25,7 +25,7 @@ namespace AccessLayer.DesignTime
             var configDir = candidates.FirstOrDefault(d => File.Exists(Path.Combine(d, "appsettings.json")));
 
             // Prefer environment variables to avoid adding configuration package dependencies in the library
-            string? connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__StoneFlowerConnection")
+            string connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__StoneFlowerConnection")
                                        ?? Environment.GetEnvironmentVariable("STONEFLOWER_CONNECTION");
 
             // Fallback to reading appsettings.json manually if env var not set

@@ -7,6 +7,6 @@ namespace Domain.ProductModels
         /// <summary>
         /// Название характеристики
         /// </summary>
-        public string Name { get; set; }        
+        public string Name { get; set; }
     }
 }

@@ -4,7 +4,7 @@ namespace ApplicationLayer.Operations.Common.Department.Commands.Update
 {
     internal class UpdateDepartmentCommandValidator : AbstractValidator<UpdateDepartmentCommand>
     {
-        public UpdateDepartmentCommandValidator() 
+        public UpdateDepartmentCommandValidator()
         {
             RuleFor(command => command.Id)
             .NotEmpty();

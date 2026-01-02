@@ -13,7 +13,7 @@ public class AuthService(
     UserManager<User> userManager,
     IConfiguration configuration)  // Добавляем IConfiguration для JWT
 {
-    public async Task<string?> LoginAsync(LoginDto loginDto)
+    public async Task<string> LoginAsync(LoginDto loginDto)
     {
         var user = await userManager.FindByEmailAsync(loginDto.Email);
         if (user == null || !await userManager.CheckPasswordAsync(user, loginDto.Password))
@@ -50,7 +50,7 @@ public class AuthService(
         var user = new User
         {
             Email = registerDto.Email,
-            UserName = registerDto.Email,            
+            UserName = registerDto.Email,
         };
 
         return await userManager.CreateAsync(user, registerDto.Password);

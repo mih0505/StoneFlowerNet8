@@ -8,7 +8,7 @@ namespace Domain.OrderModels
         /// Имя заказчика
         /// </summary>
         public PersonName CustomerName { get; set; }
-                
+
         /// <summary>
         /// Дата рождения
         /// </summary>

@@ -12,6 +12,6 @@ namespace Domain.ProductModels
         /// <summary>
         /// Характеристика категории продукта
         /// </summary>
-        public ProductProperty Property { get; set; }        
+        public ProductProperty Property { get; set; }
     }
 }

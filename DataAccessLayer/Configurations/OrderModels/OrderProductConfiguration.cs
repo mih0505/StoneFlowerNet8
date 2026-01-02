@@ -16,7 +16,7 @@ namespace AccessLayer.Configurations.OrderModels
                 .HasDefaultValue(1);
 
             builder.Property<Guid>("ProductId")
-                .IsRequired();                        
+                .IsRequired();
 
             builder.Property(op => op.Quantity)
                 .IsRequired();

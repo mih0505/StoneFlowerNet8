@@ -21,6 +21,6 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
             workername.Property(c => c.Middlename)
             .IsRequired(false)
             .HasMaxLength(128);
-        });            
+        });
     }
 }

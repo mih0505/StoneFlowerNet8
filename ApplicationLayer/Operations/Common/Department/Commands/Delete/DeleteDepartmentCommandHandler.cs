@@ -9,7 +9,7 @@ namespace ApplicationLayer.Operations.Common.Department.Commands.Delete
     internal class DeleteDepartmentCommandHandler : RequestHandlerBase<DeleteDepartmentCommand, Unit>
     {
         public DeleteDepartmentCommandHandler(IStoneFlowersDbContext context) : base(context)
-        {}
+        { }
 
         public override async Task<Unit> Handle(DeleteDepartmentCommand command, CancellationToken cancellationToken)
         {

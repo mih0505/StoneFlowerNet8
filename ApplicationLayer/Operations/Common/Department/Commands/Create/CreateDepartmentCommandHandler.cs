@@ -8,7 +8,7 @@ namespace ApplicationLayer.Operations.Common.Department.Commands.Create
         : RequestHandlerBase<CreateDepartmentCommand, Guid>
     {
         public CreateDepartmentCommandHandler(IStoneFlowersDbContext context) : base(context)
-        {}
+        { }
 
         public override async Task<Guid> Handle(CreateDepartmentCommand command, CancellationToken cancellationToken)
         {
@@ -29,7 +29,7 @@ namespace ApplicationLayer.Operations.Common.Department.Commands.Create
                 {
                     PhoneNumber = command.PhoneNumber,
                     AdvancedPhoneNumber = command.AdvancedPhoneNumber,
-                },                
+                },
                 Email = command.Email,
             };
 

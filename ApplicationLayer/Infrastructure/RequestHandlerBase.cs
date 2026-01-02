@@ -4,7 +4,7 @@ using MediatR;
 
 namespace ApplicationLayer.Infrastructure
 {
-    public abstract class RequestHandlerBase<TRequest, TResponse> 
+    public abstract class RequestHandlerBase<TRequest, TResponse>
         : IRequestHandler<TRequest, TResponse>
         where TRequest : IRequest<TResponse>
     {
@@ -17,7 +17,7 @@ namespace ApplicationLayer.Infrastructure
         public RequestHandlerBase(IStoneFlowersDbContext context, IMapper _mapper)
             => (db, mapper) = (context, _mapper);
 
-        public abstract Task<TResponse> Handle(TRequest request, 
+        public abstract Task<TResponse> Handle(TRequest request,
                 CancellationToken cancellationToken);
     }
 }

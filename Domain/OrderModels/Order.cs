@@ -19,7 +19,7 @@ namespace Domain.OrderModels
         /// <summary>
         /// Дата исполнения заказа
         /// </summary>
-        public DateTime ExecutionDate { get; set;}
+        public DateTime ExecutionDate { get; set; }
 
         /// <summary>
         /// Тип договора (приходный или расходный)
@@ -59,7 +59,7 @@ namespace Domain.OrderModels
         public IEnumerable<Deceased> Deceaseds { get; set; }
         public IEnumerable<Payment> Payments { get; set; }
         public IEnumerable<OrderProduct> Products { get; set; }
-        public Order() 
+        public Order()
         {
             Deceaseds = new List<Deceased>();
             Payments = new List<Payment>();

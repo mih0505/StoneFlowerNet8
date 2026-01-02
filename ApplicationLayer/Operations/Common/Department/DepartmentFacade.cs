@@ -10,10 +10,10 @@ using MediatR;
 namespace ApplicationLayer.Operations.Common.Department
 {
     public class DepartmentFacade : FacadeBase
-    {        
-        public DepartmentFacade(IMediator mediator) 
-            : base(mediator) 
-        { }            
+    {
+        public DepartmentFacade(IMediator mediator)
+            : base(mediator)
+        { }
 
         /// <summary>
         /// Создание филиала (подразделения) организации
@@ -23,7 +23,7 @@ namespace ApplicationLayer.Operations.Common.Department
         /// <returns>Идентификатор подразделения</returns>
         public async Task<Guid> CreateAsync(CreateDepartmentCommandDTO dto, CancellationToken cancellationToken)
         {
-            var organization = await GetOrganizationAsync(dto.OrganizationId, cancellationToken);            
+            var organization = await GetOrganizationAsync(dto.OrganizationId, cancellationToken);
 
             var command = new CreateDepartmentCommand
             {
@@ -95,7 +95,7 @@ namespace ApplicationLayer.Operations.Common.Department
         public async Task<Domain.Common.Department> GetDepartmentAsync(Guid id)
         {
             if (id == Guid.Empty)
-                return null;                       
+                return null;
 
             return await _mediator.Send(new GetDepartmentByIdQuery
             {
@@ -108,7 +108,7 @@ namespace ApplicationLayer.Operations.Common.Department
         /// </summary>
         /// <returns>Список подразделений</returns>
         public async Task<List<DepartmentDTO>> GetDepartmentsAsync()
-        {            
+        {
             return await _mediator.Send(new GetDepartmentsQuery());
         }
 

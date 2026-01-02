@@ -19,7 +19,7 @@ namespace Domain.OrderModels
         /// Продукт
         /// </summary>
         public Product Product { get; set; }
-        
+
         /// <summary>
         /// Количество товара
         /// </summary>
@@ -28,6 +28,6 @@ namespace Domain.OrderModels
         /// <summary>
         /// Цена
         /// </summary>
-        public decimal Price { get; set; }             
+        public decimal Price { get; set; }
     }
 }

@@ -3,7 +3,7 @@
 namespace Domain.ProductModels
 {
     public class Product : BaseModel
-    {        
+    {
         /// <summary>
         /// Категория товара
         /// </summary>
@@ -18,7 +18,7 @@ namespace Domain.ProductModels
         /// Описание товара
         /// </summary>
         public string Description { get; set; }
-               
+
         /// <summary>
         /// Список параметров товара
         /// </summary>

@@ -74,7 +74,7 @@ namespace AccessLayer.Configurations.OrderModels
             builder.HasKey("OrderId");
 
             builder.Property<Guid>("OrderId")
-                .IsRequired();       
+                .IsRequired();
         }
     }
 }
