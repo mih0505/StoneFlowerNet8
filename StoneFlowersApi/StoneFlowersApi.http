@@ -1,0 +1,6 @@
+@StoneFlowersApi_HostAddress = http://localhost:5016
+
+GET {{StoneFlowersApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

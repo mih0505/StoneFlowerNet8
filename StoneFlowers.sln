@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36212.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoneFlowersApi", "StoneFlowersApi\StoneFlowersApi.csproj", "{38152362-0A83-429D-BB6C-46405FB36543}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{52D612E4-CEAD-491C-A60C-A9B726B35A0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{A61068A7-02CA-4C42-A4A9-6234029796ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationLayer", "ApplicationLayer\ApplicationLayer.csproj", "{43BB0D50-1DBB-404D-A7F3-CC282AF6DB56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoneFlowersWeb", "StoneFlowersWeb\StoneFlowersWeb\StoneFlowersWeb.csproj", "{AC041A30-9D35-48AC-AC6C-21CC03A49EE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoneFlowersWeb.Client", "StoneFlowersWeb\StoneFlowersWeb.Client\StoneFlowersWeb.Client.csproj", "{3B410A1D-D23A-4C93-9DA7-B7D8F0412876}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38152362-0A83-429D-BB6C-46405FB36543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38152362-0A83-429D-BB6C-46405FB36543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38152362-0A83-429D-BB6C-46405FB36543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38152362-0A83-429D-BB6C-46405FB36543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52D612E4-CEAD-491C-A60C-A9B726B35A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52D612E4-CEAD-491C-A60C-A9B726B35A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52D612E4-CEAD-491C-A60C-A9B726B35A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52D612E4-CEAD-491C-A60C-A9B726B35A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A61068A7-02CA-4C42-A4A9-6234029796ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A61068A7-02CA-4C42-A4A9-6234029796ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A61068A7-02CA-4C42-A4A9-6234029796ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A61068A7-02CA-4C42-A4A9-6234029796ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43BB0D50-1DBB-404D-A7F3-CC282AF6DB56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43BB0D50-1DBB-404D-A7F3-CC282AF6DB56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43BB0D50-1DBB-404D-A7F3-CC282AF6DB56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43BB0D50-1DBB-404D-A7F3-CC282AF6DB56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC041A30-9D35-48AC-AC6C-21CC03A49EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC041A30-9D35-48AC-AC6C-21CC03A49EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC041A30-9D35-48AC-AC6C-21CC03A49EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC041A30-9D35-48AC-AC6C-21CC03A49EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B410A1D-D23A-4C93-9DA7-B7D8F0412876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B410A1D-D23A-4C93-9DA7-B7D8F0412876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B410A1D-D23A-4C93-9DA7-B7D8F0412876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B410A1D-D23A-4C93-9DA7-B7D8F0412876}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {446C88F0-E97F-4EE9-A7B8-9E2954F7125D}
+	EndGlobalSection
+EndGlobal

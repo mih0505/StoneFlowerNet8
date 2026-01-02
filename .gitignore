@@ -1,0 +1,25 @@
+# Visual Studio / VS Code
+.vscode/
+.vs/
+
+# Build
+bin/
+obj/
+
+# User files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Dotnet tool artifacts
+**/bin/
+**/obj/
+
+# Postgres / docker local data
+postgres-data/
+*.db
+
+# Environment/config secrets (не пушьте приватные пароли)
+appsettings.Development.json
+.env
